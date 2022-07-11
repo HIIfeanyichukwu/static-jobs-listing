@@ -17,9 +17,10 @@ interface Props {
   location: string;
   contract: string;
   logo: string;
+  position: string;
 }
 
-function CompanyInfo({logo, name, featured, recent, dateAgo, location, contract}: Props) {
+function CompanyInfo({logo, name, featured, recent, dateAgo, location, contract, position}: Props) {
   return (
     <Container>
       <Logo>
@@ -27,7 +28,7 @@ function CompanyInfo({logo, name, featured, recent, dateAgo, location, contract}
       </Logo>
       <section className="company-about-section">
         <Company name={name} featured={featured} recent={recent}/>
-        <Position>Senior FrontEnd Developer</Position>
+        <Position>{position}</Position>
         <Details dateAgo={dateAgo} contract={contract} location={location}/> 
       </section>
     </Container>

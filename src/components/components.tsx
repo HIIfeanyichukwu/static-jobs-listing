@@ -40,5 +40,8 @@ export const Logo = styled.figure`
 `
 
 export const Position = styled.span`
-    
+    color: hsl(180, 14%, 20%);
+    font-weight: 700;
+    margin-block: .8rem;
+    display: block;
 `

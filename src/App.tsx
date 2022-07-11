@@ -25,6 +25,7 @@ interface Sorted  {
 const Container = styled.div`
   inline-size: 100%;
   min-block-size: 100vh;
+  background-color: hsl(180, 52%, 96%);
 `
 const Banner = styled.div`
   inline-size: 100%;
@@ -62,6 +63,7 @@ function App() {
         role={entry.role}
         level={entry.level}
         setJobs={setJobs}
+        position={entry.position}
 
       />
     )

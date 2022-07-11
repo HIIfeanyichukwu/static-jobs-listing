@@ -5,7 +5,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   line-height: 1.5;
-  gap: 1rem;
+  gap: .25rem;
+  font-weight: 500;
+  color: hsl(180, 8%, 52%);
+  margin-block-end: 1rem;
 `
 
 interface Props {
