@@ -44,8 +44,8 @@ const Banner = styled.div`
 
 
 function App() {
-  let sorted: Sorted[] = [];
-  const [jobs, setJobs] = useState(sorted.length > 0 ? sorted: data)
+  let filtered: number[] = [];
+  const [jobs, setJobs] = useState(data)
   let jobs_map = jobs.map(entry => {
     return (
       <Jobs 

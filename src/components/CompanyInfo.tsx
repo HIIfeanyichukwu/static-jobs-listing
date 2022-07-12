@@ -6,7 +6,7 @@ import Company from './Company'
 import { Position, Logo } from './components'
 
 const Container = styled.div`
-    
+  border-block-end: 1px solid #acbdbd;
 `
 
 interface Props {

@@ -5,19 +5,21 @@ import Labels from './Labels'
 
 const Container = styled.div`
     & + & {
-        margin-block-start: 2rem;
+        margin-block-start: 2.7rem;
     }
     position: relative;
     border-radius: 4px;
     background-color: #fff;
-    padding-block: 1rem;
-    /* box-shadow: 3px 8px 10px #e2dbdb; */
-    /* box-shadow: 3px 8px 10px #e2dbdb; */
+    padding-block: 2.2rem 1rem;
     box-shadow: 3px 8px 18px #bee9e9;
-    margin-inline: 1.5rem;
+    margin-inline: 1rem;
     padding-inline: 1rem;
-    /* filter: drop-shadow(3px 2px 10px #000000); */
-    /* filter: drop-shadow(1px 2px 8px hsl(180, 52%, 96%)); */
+
+    @media (min-width: 360px) {
+
+        margin-inline: 1.5rem;
+        padding-inline: 1.5rem;
+    }
 `
 
 type Props = {
