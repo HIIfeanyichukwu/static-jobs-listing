@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const FilterItem = styled.span`
+    padding-inline: .5rem;
+    padding-block: .5rem;
+    color: hsl(180, 29%, 50%);
+    font-weight: 700;
+    background-color: hsl(180, 31%, 95%);
+    font-size: 1rem;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+`
+
 export const Label = styled.button`
     padding-inline: .5rem;
     padding-block: .5rem;
@@ -9,6 +21,7 @@ export const Label = styled.button`
     font-size: 1rem;
     border-radius: 8px;
     border: none;
+    transition: all .25s;
     
     @media (hover: none) {
         color: #fff;
@@ -53,6 +66,11 @@ export const Logo = styled.figure`
     position: absolute;
     top: -25px;
 
+    @media (min-width: 900px) {
+        width: 75px;
+        position: static;
+    }
+
 `
 
 export const Position = styled.span`
@@ -69,4 +87,21 @@ export const Position = styled.span`
     :hover {
         color: hsl(180, 29%, 50%);
     }
+`
+
+export const Close = styled.button`
+    background-color: hsl(180, 29%, 50%);
+    border: none;
+    padding: .5rem;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    :hover {
+        background-color: #000;
+        cursor: pointer;
+    }
+`
+
+export const Filtered = styled.div`
+    display: flex;
 `

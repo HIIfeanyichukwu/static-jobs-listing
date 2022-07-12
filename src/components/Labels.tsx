@@ -7,6 +7,11 @@ const Container = styled.div`
     flex-wrap: wrap;
     gap: 1rem;
     margin-block-start: 1rem;
+    margin-inline-start: auto;
+
+    @media (min-width: 768px) {
+        margin-block-start: 0;
+    }
 `
 
 interface Props<T>{

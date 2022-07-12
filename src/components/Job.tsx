@@ -8,17 +8,35 @@ const Container = styled.div`
         margin-block-start: 2.7rem;
     }
     position: relative;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: #fff;
     padding-block: 2.2rem 1rem;
     box-shadow: 3px 8px 18px #bee9e9;
     margin-inline: 1rem;
     padding-inline: 1rem;
+    border-inline-start: 8px solid hsl(180, 29%, 50%);
 
     @media (min-width: 360px) {
 
         margin-inline: 1.5rem;
         padding-inline: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        /* align-items: flex-start; */
+    }
+
+    max-inline-size: 1000px;
+
+    @media (min-width: 800px) {
+        margin-inline: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+        margin-block: 0;
+        margin-inline: auto;
     }
 `
 
@@ -60,7 +78,7 @@ interface AllProps extends Props  {
 }
 
 
-export default function Jobs(props: AllProps) {
+export default function Job(props: AllProps) {
   return (
     <Container>
         <CompanyInfo 

@@ -7,6 +7,16 @@ import { Position, Logo } from './components'
 
 const Container = styled.div`
   border-block-end: 1px solid #acbdbd;
+
+  @media (min-width: 768px) {
+    border-block-end: none;
+  }
+
+  @media (min-width: 900px) {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
 `
 
 interface Props {

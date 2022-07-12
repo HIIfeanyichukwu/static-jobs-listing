@@ -9,6 +9,10 @@ const Container = styled.div`
   font-weight: 500;
   color: hsl(180, 8%, 52%);
   margin-block-end: 1rem;
+
+  @media (min-width: 768px) {
+    margin-block-end: 0;
+  }
 `
 
 interface Props {

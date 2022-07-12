@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import bgbig from '/images/bg-header-desktop.svg';
 import bgsm from '/images/bg-header-mobile.svg';
 import data from '../public/data/data.json'
-import Jobs from './components/Jobs';
+import Job from './components/Job';
+import Filter from './components/Filter'
 
 interface Sorted  {
   id : number;
@@ -26,7 +27,15 @@ const Container = styled.div`
   inline-size: 100%;
   min-block-size: 100vh;
   background-color: hsl(180, 52%, 96%);
+  position: relative;
+
+
 `
+
+const Jobs = styled.div`
+  margin-block-end: 2rem;
+`
+
 const Banner = styled.div`
   inline-size: 100%;
   background-image: url(${bgsm});
@@ -34,6 +43,7 @@ const Banner = styled.div`
   background-color: hsl(180, 29%, 50%);
   block-size: 10rem;
   margin-block-end: 3rem;
+  position: relative;
 
   @media (min-width: 1024px) {
     background-image: url(${bgbig});
@@ -44,11 +54,11 @@ const Banner = styled.div`
 
 
 function App() {
-  let filtered: number[] = [];
+  let filtered: string[] = [];
   const [jobs, setJobs] = useState(data)
   let jobs_map = jobs.map(entry => {
     return (
-      <Jobs 
+      <Job 
         key={entry.id}
         id={entry.id}
         contract={entry.contract}
@@ -71,8 +81,15 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Banner aria-label='page banner image'></Banner>
-        {jobs_map}
+        <Banner aria-hidden={true}>
+
+          <Filter
+            filtered={["frontend", "css"]}
+          />
+        </Banner>
+        <Jobs>
+          {jobs_map}
+        </Jobs>
       </Container>
     </div>
   )
