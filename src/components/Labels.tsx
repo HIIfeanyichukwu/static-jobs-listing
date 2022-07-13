@@ -19,13 +19,30 @@ interface Props<T>{
     tools: T[];
     role: T;
     level: T;
+    setFiltered: React.Dispatch<React.SetStateAction<string[]>>;
+    id: number;
+    filtered: string[];
 }
 
-export default function Labels({languages, tools, role, level}: Props<string>) {
+export default function Labels({languages, tools, role, level, id, setFiltered, filtered}: Props<string>) {
+
+    const handleLabelClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        let target = e.target as HTMLButtonElement;
+        if (!filtered.includes(target.textContent as string)) {
+            setFiltered([...filtered,target.textContent as string])
+        }
+        return
+    }   
 
     let labels = [role, level,...languages, ...tools]
     let labels_map: any[] = labels.map(label => {
-        return <Label key={label}>{label}</Label>
+        return (
+            <Label 
+                onClick={handleLabelClick}
+                key={label}
+            >{label}
+            </Label>
+        ) 
     })
   return (
     <Container>

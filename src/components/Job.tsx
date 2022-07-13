@@ -54,6 +54,7 @@ type Props = {
     role: string; 
     level: string
     position: string;
+    filtered: string[]
 }
 
 
@@ -75,6 +76,7 @@ interface AllProps extends Props  {
         languages: string[];
         tools: string[];
     }[]>>;
+    setFiltered: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 
@@ -96,6 +98,9 @@ export default function Job(props: AllProps) {
             level={props.level}
             role={props.role}
             tools={props.tools} 
+            setFiltered={props.setFiltered}
+            id={props.id}
+            filtered={props.filtered}
         />
     </Container>
   )

@@ -45,6 +45,10 @@ const Banner = styled.div`
   margin-block-end: 3rem;
   position: relative;
 
+  &.addMargin {
+    margin-block-end: 5rem;
+  }
+
   @media (min-width: 1024px) {
     background-image: url(${bgbig});
     background-size: cover;
@@ -54,9 +58,17 @@ const Banner = styled.div`
 
 
 function App() {
-  let filtered: string[] = [];
+  const [filtered, setFiltered] = useState<Array<string>>([])
   const [jobs, setJobs] = useState(data)
-  let jobs_map = jobs.map(entry => {
+  let jobs_map = jobs.filter(job => {
+    if (filtered.length==0) {
+      return job;
+    }
+    let labels = [job.role, job.level, ...job.languages, ...job.tools];
+    let find = filtered.find(item => labels.includes(item))
+    if (find != undefined) return job;
+  })
+  let mapped = jobs_map.map(entry => {
     return (
       <Job 
         key={entry.id}
@@ -73,7 +85,9 @@ function App() {
         role={entry.role}
         level={entry.level}
         setJobs={setJobs}
+        setFiltered={setFiltered}
         position={entry.position}
+        filtered={filtered}
 
       />
     )
@@ -81,14 +95,20 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Banner aria-hidden={true}>
-
-          <Filter
-            filtered={["frontend", "css"]}
-          />
+        <Banner
+          className={filtered.length > 0? "addMargin": "no"}
+          aria-hidden={true}
+        >
+          {
+            filtered.length > 0 ? 
+            <Filter
+              filtered={filtered}
+              setFiltered={setFiltered}
+            /> : null
+          }
         </Banner>
         <Jobs>
-          {jobs_map}
+          {mapped}
         </Jobs>
       </Container>
     </div>
