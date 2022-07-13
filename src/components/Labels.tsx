@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { Label } from './components'
-
+import { JobCtx } from './Job'
 const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -14,32 +14,25 @@ const Container = styled.div`
     }
 `
 
-interface Props<T>{
-    languages: T[];
-    tools: T[];
-    role: T;
-    level: T;
-    setFiltered: React.Dispatch<React.SetStateAction<string[]>>;
-    id: number;
-    filtered: string[];
-}
 
-export default function Labels({languages, tools, role, level, id, setFiltered, filtered}: Props<string>) {
+export default function Labels() {
+
+    const job = useContext(JobCtx)
 
     const handleLabelClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         let target = e.target as HTMLButtonElement;
-        if (!filtered.includes(target.textContent as string)) {
-            setFiltered([...filtered,target.textContent as string])
+        if (!job?.filtered.includes(target.textContent as string)) {
+            job?.setFiltered([...job?.filtered,target.textContent as string])
         }
         return
     }   
 
-    let labels = [role, level,...languages, ...tools]
-    let labels_map: any[] = labels.map(label => {
+    let labels = [job?.role, job?.level,...(job?.languages == undefined ? []: job.languages), ...(job?.tools == undefined ? []: job.tools)]
+    let labels_map = labels.map(label => {
         return (
             <Label 
-                onClick={handleLabelClick}
                 key={label}
+                onClick={handleLabelClick}
             >{label}
             </Label>
         ) 

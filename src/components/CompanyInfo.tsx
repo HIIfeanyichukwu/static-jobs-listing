@@ -1,10 +1,10 @@
-import React, { Children, ReactNode } from 'react'
+import React, { Children, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 
 import { Details } from './Details'
 import Company from './Company'
 import { Position, Logo } from './components'
-
+import { JobCtx } from './Job'
 const Container = styled.div`
   border-block-end: 1px solid #acbdbd;
 
@@ -19,27 +19,19 @@ const Container = styled.div`
   }
 `
 
-interface Props {
-  name: string;
-  featured?: boolean;
-  recent?: boolean;
-  dateAgo: string;
-  location: string;
-  contract: string;
-  logo: string;
-  position: string;
-}
 
-function CompanyInfo({logo, name, featured, recent, dateAgo, location, contract, position}: Props) {
+function CompanyInfo() {
+
+  const job = useContext(JobCtx)
   return (
     <Container>
       <Logo>
-        <img src={logo} alt={`${name} company logo`} />
+        <img src={job?.logo} alt={`${job?.company} company logo`} />
       </Logo>
       <section className="company-about-section">
-        <Company name={name} featured={featured} recent={recent}/>
-        <Position>{position}</Position>
-        <Details dateAgo={dateAgo} contract={contract} location={location}/> 
+        <Company name={job?.company} featured={job?.featured} recent={job?.new}/>
+        <Position>{job?.position}</Position>
+        <Details dateAgo={job?.postedAt} contract={job?.contract} location={job?.location}/> 
       </section>
     </Container>
   )

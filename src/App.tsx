@@ -23,7 +23,7 @@ interface Sorted  {
   tools: string[];
 }
 
-const Container = styled.div`
+const Container = styled.main`
   inline-size: 100%;
   min-block-size: 100vh;
   background-color: hsl(180, 52%, 96%);
@@ -57,6 +57,9 @@ const Banner = styled.div`
 `
 
 
+
+
+
 function App() {
   const [filtered, setFiltered] = useState<Array<string>>([])
   const [jobs, setJobs] = useState(data)
@@ -70,25 +73,24 @@ function App() {
   })
   let mapped = jobs_map.map(entry => {
     return (
-      <Job 
-        key={entry.id}
-        id={entry.id}
+      <Job
+        company={entry.company}
         contract={entry.contract}
-        dateAgo={entry.postedAt}
+        new={entry.new}
+        postedAt={entry.postedAt}
         featured={entry.featured}
-        recent={entry.new}
-        location={entry.location}
-        logo={entry.logo}
-        name={entry.company}
+        filtered={filtered}
+        id={entry.id}
+        key={entry.id}
         languages={entry.languages}
         tools={entry.tools}
-        role={entry.role}
+        location={entry.location}
         level={entry.level}
-        setJobs={setJobs}
-        setFiltered={setFiltered}
+        role={entry.role}
+        logo={entry.logo}
         position={entry.position}
-        filtered={filtered}
-
+        setFiltered={setFiltered}
+        setJobs={setJobs}
       />
     )
   })

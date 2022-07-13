@@ -18,7 +18,7 @@ const Container = styled.div`
 `
 
 interface Props {
-  name: string;
+  name?: string;
   recent?: boolean;
   featured?: boolean
 }

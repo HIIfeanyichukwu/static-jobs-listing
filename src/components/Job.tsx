@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import styled from 'styled-components'
 import CompanyInfo from './CompanyInfo'
 import Labels from './Labels'
@@ -43,12 +43,12 @@ const Container = styled.div`
 type Props = {
     id: number;
     contract: string;
-    dateAgo: string;
+    postedAt: string;
     location: string;
     logo: string;
-    name: string;
+    company: string;
     featured: boolean;
-    recent: boolean;
+    new: boolean;
     languages: string[];
     tools: string[];
     role: string; 
@@ -80,28 +80,18 @@ interface AllProps extends Props  {
 }
 
 
+export const JobCtx = createContext<AllProps | null>(null)
+
+
 export default function Job(props: AllProps) {
+
   return (
     <Container>
-        <CompanyInfo 
-            contract={props.contract}
-            dateAgo={props.dateAgo}
-            location={props.location}
-            logo={props.logo}
-            name={props.name}
-            featured={props.featured}
-            recent={props.recent}
-            position={props.position}
-        />
-        <Labels
-            languages={props.languages}
-            level={props.level}
-            role={props.role}
-            tools={props.tools} 
-            setFiltered={props.setFiltered}
-            id={props.id}
-            filtered={props.filtered}
-        />
+        <JobCtx.Provider value={props}>
+            <CompanyInfo/>
+            <Labels/>
+        </JobCtx.Provider>
+
     </Container>
   )
 }

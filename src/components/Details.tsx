@@ -16,9 +16,9 @@ const Container = styled.div`
 `
 
 interface Props {
-  dateAgo: string;
-  contract: string;
-  location: string;
+  dateAgo?: string;
+  contract?: string;
+  location?: string;
 }
 
 export const Details = ({dateAgo, contract, location}: Props) => {
