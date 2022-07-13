@@ -47,8 +47,13 @@ const Container = styled.div`
 const Labels = styled.div`
     display: flex;
     overflow: auto;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 1rem;
+
+
+    @media (min-width: 768px) {
+        flex-wrap: nowrap;
+    }
 
     scroll-behavior: smooth;
 
